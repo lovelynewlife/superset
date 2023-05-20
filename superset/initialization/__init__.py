@@ -25,7 +25,7 @@ import wtforms_json
 from deprecation import deprecated
 from flask import Flask, redirect
 from flask_appbuilder import expose, IndexView
-from flask_babel import gettext as __, lazy_gettext as _
+from flask_babel import gettext as __
 from flask_compress import Compress
 from werkzeug.middleware.proxy_fix import ProxyFix
 
@@ -193,6 +193,8 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
         from superset.views.tags import TagModelView, TagView
         from superset.views.users.api import CurrentUserRestApi
 
+        from superset.views.search_engine.views import SearchEngineModelView
+
         #
         # Setup API views
         #
@@ -267,6 +269,14 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             label=__("Datasets"),
             href="/tablemodelview/list/",
             icon="fa-table",
+            category="",
+            category_icon="",
+        )
+
+        appbuilder.add_view(
+            SearchEngineModelView,
+            "Search",
+            label=__("Searching"),
             category="",
             category_icon="",
         )

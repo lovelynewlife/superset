@@ -119,6 +119,10 @@ const RowLevelSecurityList = lazy(
     ),
 );
 
+const SearchEngineEntry = lazy(
+  () => import(/* webpackChunkName: "SearchEngineEntry" */ 'src/pages/Search'),
+);
+
 type Routes = {
   path: string;
   Component: React.ComponentType;
@@ -216,6 +220,10 @@ export const routes: Routes = [
   {
     path: '/rowlevelsecurity/list',
     Component: RowLevelSecurityList,
+  },
+  {
+    path: '/searching/show',
+    Component: SearchEngineEntry,
   },
 ];
 
